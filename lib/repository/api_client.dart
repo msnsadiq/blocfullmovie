@@ -20,6 +20,7 @@ class ApiClient {
     Response response;
 
     String url = basePath + path + '?api_key=$token';
+    String searchUrl = basePath+'search/multi'+'?api_key=$token'+path;
     print(url);
 
     final nullableHeaderParams = (headerParams.isEmpty) ? null : headerParams;
@@ -39,6 +40,9 @@ class ApiClient {
         break;
       case "GET_":
         response = await post(Uri.parse(url), headers:  {},body: body,);
+        break;
+      case "SEARCH":
+        response = await get(Uri.parse(searchUrl), headers: {'Accept': 'application/json','Content-Type': 'application/json'});
         break;
       default:
         response = await get(Uri.parse(url), headers: {'Accept': 'application/json','Content-Type': 'application/json'});

@@ -1,6 +1,7 @@
 import 'package:finalblocmovie/ApiItem/apiitem.dart';
 import 'package:finalblocmovie/Model%20Classes/TrendingMovieModel.dart';
 import 'package:finalblocmovie/bloc/tmdb_bloc.dart';
+import 'package:finalblocmovie/ui%20pages/movieDetailPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -35,8 +36,13 @@ class _MoviePageState extends State<MoviePage> {
             child: GridView.builder(gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
                 itemCount: trendingMovieModel.results!.length,
                 itemBuilder: (ctx,index){
-              return Card(
-                child: Image.network(imagepathurl+trendingMovieModel.results![index].posterPath.toString(),fit: BoxFit.fill,),
+              return GestureDetector(
+                onTap: (){
+                  Navigator.of(context).push(MaterialPageRoute(builder: (ctx)=>MovieDetails(id: trendingMovieModel.results![index].id.toString())));
+                },
+                child: Card(
+                  child: Image.network(imagepathurl+trendingMovieModel.results![index].posterPath.toString(),fit: BoxFit.fill,),
+                ),
               );
                 }),
           );
