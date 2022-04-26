@@ -75,12 +75,12 @@ class Results {
       String? originalLanguage, 
       String? originalTitle, 
       String? overview, 
-      double? popularity, 
+      dynamic popularity,
       String? posterPath, 
       String? releaseDate, 
       String? title, 
       bool? video, 
-      double? voteAverage, 
+      dynamic voteAverage,
       int? voteCount,}){
     _adult = adult;
     _backdropPath = backdropPath;
@@ -124,12 +124,12 @@ class Results {
   String? _originalLanguage;
   String? _originalTitle;
   String? _overview;
-  double? _popularity;
+  dynamic _popularity;
   String? _posterPath;
   String? _releaseDate;
   String? _title;
   bool? _video;
-  double? _voteAverage;
+  dynamic _voteAverage;
   int? _voteCount;
 
   bool? get adult => _adult;
@@ -140,12 +140,12 @@ class Results {
   String? get originalLanguage => _originalLanguage;
   String? get originalTitle => _originalTitle;
   String? get overview => _overview;
-  double? get popularity => _popularity;
+  dynamic get popularity => _popularity;
   String? get posterPath => _posterPath;
   String? get releaseDate => _releaseDate;
   String? get title => _title;
   bool? get video => _video;
-  double? get voteAverage => _voteAverage;
+  dynamic get voteAverage => _voteAverage;
   int? get voteCount => _voteCount;
 
   Map<String, dynamic> toJson() {

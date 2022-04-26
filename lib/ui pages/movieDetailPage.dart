@@ -21,9 +21,7 @@ class _MovieDetailsState extends State<MovieDetails> {
   final imagepathurl = 'https://image.tmdb.org/t/p/w185';
   bool isloading = false;
   bool tappp = false;
-  changeBool() {
-    tappp = true;
-  }
+
 
   @override
   void initState() {
@@ -55,8 +53,10 @@ class _MovieDetailsState extends State<MovieDetails> {
               height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
-                image: DecorationImage(image: NetworkImage("https://images.unsplash.com/photo-1534175507998-e5477e27c2c7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8YmxhY2slMjBiYWNrZ3JvdW5kfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"),fit: BoxFit.fill)
-              ),
+                  image: DecorationImage(
+                      image: NetworkImage(
+                          "https://images.unsplash.com/photo-1554050857-c84a8abdb5e2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGJsYWNrJTIwYmFja2dyb3VuZHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"),
+                      fit: BoxFit.fill)),
               child: SingleChildScrollView(
                 scrollDirection: Axis.vertical,
                 child: Column(
@@ -98,7 +98,8 @@ class _MovieDetailsState extends State<MovieDetails> {
                               padding: const EdgeInsets.fromLTRB(33, 0, 0, 0),
                               child: Text(
                                 "language:  " +
-                                    movieDetailModel.originalLanguage.toString(),
+                                    movieDetailModel.originalLanguage
+                                        .toString(),
                                 style: TextStyle(color: Colors.white),
                               ),
                             ),
@@ -210,79 +211,74 @@ class _MovieDetailsState extends State<MovieDetails> {
                             ),
                           )
                         : SizedBox(),
-
-movieDetailModel.posterPath != null ?
-    Padding(padding: EdgeInsets.only(top: 48),
-    child: SizedBox(
-      height: 30,
-      width: 250,
-      child: Card(
-        color: Colors.grey,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-
-                              Icon(Icons.add),
-                              SizedBox(
-                                width: 9,
+                    movieDetailModel.posterPath != null
+                        ? Padding(
+                            padding: EdgeInsets.only(top: 48),
+                            child: SizedBox(
+                              height: 30,
+                              width: 250,
+                              child: Card(
+                                color: Colors.grey,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Icon(Icons.add),
+                                    SizedBox(
+                                      width: 9,
+                                    ),
+                                    Text(
+                                      "Add to Watchlist",
+                                      style: GoogleFonts.rubikBeastly(),
+                                    )
+                                  ],
+                                ),
                               ),
-                              Text(
-                                "Add to Watchlist",
-                                style: GoogleFonts.rubikBeastly(),
-                              )
-          ],
-        ),
-      ),
-    ),
-    ):SizedBox(),
-
-movieDetailModel.posterPath != null?
-    Padding(padding: EdgeInsets.only(top: 10),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-                                  IconButton(
-                              onPressed: () async {
-                                await launch(
-                                    "https://www.facebook.com");
-                              },
-                              icon: Icon(
-                                FontAwesomeIcons.facebook,
-                                color: Colors.white,
-                              )),
-                          IconButton(
-                              onPressed: () async {
-                                await launch(
-                                    "https://www.instagram.com");
-                              },
-                              icon: Icon(
-                                FontAwesomeIcons.instagram,
-                                color: Colors.white,
-                              )),
-                          IconButton(
-                              onPressed: () async {
-                                await launch(
-                                    'https://twitter.com/i/flow/login?input_flow_data=%7B%22requested_variant%22%3A%22eyJsYW5nIjoiZW4ifQ%3D%3D%22%7D');
-                              },
-                              icon: Icon(
-                                FontAwesomeIcons.twitter,
-                                color: Colors.white,
-                              )),
-                          IconButton(
-                              onPressed: () async {
-                                await launch(
-                                    'https://www.youtube.com/');
-                              },
-                              icon: Icon(
-                                FontAwesomeIcons.youtube,
-                                color: Colors.white,
-                              )),
-      ],
-    ),
-    ):SizedBox()
-
-
-
+                            ),
+                          )
+                        : SizedBox(),
+                    movieDetailModel.posterPath != null
+                        ? Padding(
+                            padding: EdgeInsets.only(top: 10),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                IconButton(
+                                    onPressed: () async {
+                                      await launch("https://www.facebook.com");
+                                    },
+                                    icon: Icon(
+                                      FontAwesomeIcons.facebook,
+                                      color: Colors.white,
+                                    )),
+                                IconButton(
+                                    onPressed: () async {
+                                      await launch("https://www.instagram.com");
+                                    },
+                                    icon: Icon(
+                                      FontAwesomeIcons.instagram,
+                                      color: Colors.white,
+                                    )),
+                                IconButton(
+                                    onPressed: () async {
+                                      await launch(
+                                          'https://twitter.com/i/flow/login?input_flow_data=%7B%22requested_variant%22%3A%22eyJsYW5nIjoiZW4ifQ%3D%3D%22%7D');
+                                    },
+                                    icon: Icon(
+                                      FontAwesomeIcons.twitter,
+                                      color: Colors.white,
+                                    )),
+                                IconButton(
+                                    onPressed: () async {
+                                      await launch('https://www.youtube.com/');
+                                    },
+                                    icon: Icon(
+                                      FontAwesomeIcons.youtube,
+                                      color: Colors.white,
+                                    )),
+                              ],
+                            ),
+                          )
+                        : SizedBox()
                   ],
                 ),
               ),

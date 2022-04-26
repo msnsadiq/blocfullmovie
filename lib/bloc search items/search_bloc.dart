@@ -20,6 +20,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       }
       catch(e){
         emit(SearchError());
+       // print('error $e');
       }
       // TODO: implement event handler
     });

@@ -4,6 +4,7 @@ import 'package:finalblocmovie/bloc/tmdb_bloc.dart';
 import 'package:finalblocmovie/ui%20pages/movieDetailPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class MoviePage extends StatefulWidget {
   const MoviePage({Key? key}) : super(key: key);
@@ -25,6 +26,25 @@ class _MoviePageState extends State<MoviePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(
+          leadingWidth: 4,
+          toolbarHeight: 20,
+          title: Text("Trending Movies",style: GoogleFonts.alegreya(color: Colors.redAccent),
+              // style: TextStyle(color: Colors.redAccent, fontFamily: "title")
+           ),
+          backgroundColor: Colors.black,
+          actions: [
+            Icon(
+              Icons.slow_motion_video_rounded,
+              size: 20,
+              color: Colors.redAccent,
+            ),
+            SizedBox(
+              width: MediaQuery.of(context).size.width / 2.2,
+            )
+          ],
+        ),
+      backgroundColor: Colors.black,
       body: BlocBuilder<TmdbBloc,TmdbState>(builder: (context, state) {
         if(state is TmdbLoaded){
           trendingMovieModel = BlocProvider.of<TmdbBloc>(context).trendingMovieModel;
@@ -41,6 +61,8 @@ class _MoviePageState extends State<MoviePage> {
                   Navigator.of(context).push(MaterialPageRoute(builder: (ctx)=>MovieDetails(id: trendingMovieModel.results![index].id.toString())));
                 },
                 child: Card(
+                  elevation: 20,
+                  shadowColor: Colors.red,
                   child: Image.network(imagepathurl+trendingMovieModel.results![index].posterPath.toString(),fit: BoxFit.fill,),
                 ),
               );
@@ -59,6 +81,7 @@ class _MoviePageState extends State<MoviePage> {
             child: SingleChildScrollView(
 
               child: Container(
+                color: Colors.white,
                 height: MediaQuery.of(context).size.height*1.1,
                 width: MediaQuery.of(context).size.width,
 
@@ -77,6 +100,7 @@ class _MoviePageState extends State<MoviePage> {
           child: SingleChildScrollView(
 
             child: Container(
+              color: Colors.white,
               height: MediaQuery.of(context).size.height*1.1,
               width: MediaQuery.of(context).size.width,
 

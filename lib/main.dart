@@ -1,6 +1,8 @@
 import 'package:finalblocmovie/ApiItem/apiitem.dart';
 import 'package:finalblocmovie/bloc%20details%20movie/details_movie_bloc.dart';
 import 'package:finalblocmovie/bloc%20search%20items/search_bloc.dart';
+import 'package:finalblocmovie/bloc%20tv%20details/tv_detail_bloc.dart';
+import 'package:finalblocmovie/bloc%20tvshows/bloc_tv_shows_bloc.dart';
 import 'package:finalblocmovie/bloc/tmdb_bloc.dart';
 import 'package:finalblocmovie/ui%20pages/homepage.dart';
 import 'package:finalblocmovie/ui%20pages/moviepage.dart';
@@ -21,7 +23,9 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [BlocProvider(create: (context)=>TmdbBloc(apiItem)),
       BlocProvider(create: (context)=>DetailsMovieBloc(apiItem)),
-        BlocProvider(create: (context)=>SearchBloc(apiItem))
+        BlocProvider(create: (context)=>SearchBloc(apiItem)),
+        BlocProvider(create: (context)=> TvShowsBloc(apiItem)),
+        BlocProvider(create: (context)=>TvDetailBloc(apiItem))
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
