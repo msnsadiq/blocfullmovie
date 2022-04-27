@@ -55,7 +55,7 @@ class _MixedHomeState extends State<MixedHome> {
                 ),
                 trailing: IconButton(onPressed: (){
                   Navigator.of(context).push(MaterialPageRoute(builder: (ctx)=>TvShowPage()));
-                }, icon: Icon(Icons.arrow_forward_ios_sharp)),
+                }, icon: Icon(Icons.arrow_forward_ios_sharp,color: Colors.white,)),
               ),
               SizedBox(
                 height: 200,
@@ -90,6 +90,12 @@ class _MixedHomeState extends State<MixedHome> {
                   }
                   return Center(child: Text("state error"),);
                 }),
+              ),
+              ListTile(
+                title: Text("Movies",style: TextStyle(color: Colors.white),
+
+                ),
+                trailing: IconButton(onPressed: (){}, icon: Icon(Icons.keyboard_arrow_down_outlined,color: Colors.white,)),
               )
             ],
           ),
@@ -101,17 +107,6 @@ class _MixedHomeState extends State<MixedHome> {
 }
 
 
-//                                 child: Image.network(
-//                                   imageurl +
-//                                       tvtopprovider.tvShowTopRatedModel
-//                                           .results![index].posterPath
-//                                           .toString(),
-//                                   fit: BoxFit.fill,
-//                                 ),
-//                               ),
-//                             );
-//                           }),
-//                     ),
 //                     ListTile(
 //                       title: Text(
 //                         "Movies",
